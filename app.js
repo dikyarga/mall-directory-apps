@@ -7,9 +7,12 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose')
 var index = require('./routes/index');
 var users = require('./routes/users');
-var apis = require('./routes/apis')
-
+var apis = require('./routes/apis');
+var mongoose = require('mongoose');
+var db = mongoose.connection;
 var app = express();
+
+mongoose.connect('mongodb://localhost:27017/mall')
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -40,5 +43,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.send(err);
 });
+
+
 
 module.exports = app;
