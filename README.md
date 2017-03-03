@@ -1,6 +1,6 @@
 #Mall Apps
 
-#Project Title
+##Project Title
 
 ####Mall Apps
 
@@ -16,6 +16,7 @@ The app using express, nodejs, mongodb, mongoose, passport auth
 
 ```
 > npm install
+> cp .env.example .env
 > node query-seed-data-endy.js
 > npm run dev
 ```
