@@ -8,9 +8,20 @@ var mongoose = require('mongoose')
 var index = require('./routes/index');
 var users = require('./routes/users');
 var apis = require('./routes/apis')
+var passport = require('passport')
 
 var app = express();
 
+mongoose.connect('mongodb://localhost/mallapps', function (err) {
+  if (err) throw err
+  console.log('database connected using mongoose')
+})
+
+// Passport --------
+app.use(passport.initialize())
+app.use(passport.session())
+require('./config/passport')(passport)
+//-----------------//
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
