@@ -9,8 +9,11 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var apis = require('./routes/apis')
 var passport = require('passport')
+require('dotenv').config();
 
 var app = express();
+
+require('./controllers/botController')
 
 mongoose.connect(process.env.mongooseConfig, function (err) {
     if (err) throw err
