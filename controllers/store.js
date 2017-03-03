@@ -33,5 +33,30 @@ methods.showbyId = function(req, res, next){
   })
 };
 
+methods.update = function(req, res, next){
+  Store.findById(req.params.id, function(err,store){
+    if(err){
+      res.status(500).send("store id is not found")
+    }else{
+      store.name = req.body.name || store.name
+      store.phone = req.body.phone || store.phone
+      store.floor = req.body.floor || store.floor
+      store.catagory = req.body.catagory || store.catagory
+
+      store.save(function(err) {
+        if (err) res.send(err);
+        res.send('Data has been successfully updated')
+      })
+    }
+  })
+};
+
+methods.remove = function(req, res, next){
+  Store.findByIdAndRemove(req.params.Id,function(err){
+    if (err) res.status(500).send("store Id is not found");
+    res.send('Data has been successfully removed from database')
+  })
+};
+
 
 module.exports = methods
