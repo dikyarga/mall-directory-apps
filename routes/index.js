@@ -17,12 +17,10 @@ router.post('/register', userController.register);
 //login-facebook
 router.get('/auth/facebook/login', passport.authenticate('facebook', {scope: 'email'}))
 
-router.use('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/auth/login/success', failureRedirect: '/auth/login/failed' }))
+router.use('/auth/facebook/callback', passport.authenticate('facebook'), userController.loginFacebook)
 
 router.get('/auth/login/failed', function (req, res) {
   res.send('error')
 })
-
-router.get('/auth/login/success', userController.login)
 
 module.exports = router;

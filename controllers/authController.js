@@ -9,6 +9,12 @@ module.exports = {
     res.send({ token: token })
   },
 
+  loginFacebook: function(req, res, next) {
+    console.log(res.req.user.facebook.email);
+    var token = jwt.sign({ email: res.req.user.facebook.email }, process.env.SECRET, { expiresIn: '1d' });
+    res.send({ token: token })
+  },
+
   register: function(req, res, next) {
     User.create({
       'local.username': req.body.username,
