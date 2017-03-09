@@ -55,6 +55,6 @@ The app using express, nodejs, mongodb, mongoose, passport auth
 |Name           |Github                          |
 |:--------------|:------------------------------:|
 |Diky Arga      |https://github.com/dikyarga     |
-|Didit Suryadi  |https://github.com/didietsuryadi|
+|Izumi          |https://github.com/isumizumi|
 |Endy           |https://github.com/pisanggoreng |
-|M Firman       |https://github.com/mfpebrizal   |
+|Irwin          |https://github.com/irwinpratajaya   |
