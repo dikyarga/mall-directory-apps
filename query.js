@@ -24,7 +24,7 @@ for (let i = 0; i < data.length; i++) {
         name: data[i].name,
         floor: data[i].floor_id,
         phone: faker.phone.phoneNumberFormat(),
-        catagory: faker.random.arrayElement(categoryList),
+        category: faker.random.arrayElement(categoryList),
         mall: faker.random.arrayElement(mallList)
     });
 

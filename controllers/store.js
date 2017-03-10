@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var _ = require('lodash');
 const Store = require('../models/store');
 const methods = {}
 
@@ -40,9 +41,7 @@ methods.update = function (req, res, next) {
         if (err) {
             res.status(500)
                 .send("store id is not found")
-        } else {
-            store.name = req.body.name || store.name
-            store.phone = req.body.phone || store.phone
+        } else {ore.phone
             store.floor = req.body.floor || store.floor
             store.catagory = req.body.catagory || store.catagory
 
@@ -81,8 +80,8 @@ methods.findByName = function (req, res, next) {
 
 methods.findByCategory = function (req, res, next) {
     Store.find({
-            'catagory': {
-                $regex: req.body.catagory,
+            'category': {
+                $regex: req.body.category,
                 $options: "i"
             },
             'mall': {
@@ -105,6 +104,22 @@ methods.findByFloor = function (req, res, next) {
         })
         .then(function (result) {
             res.send(result)
+        })
+}
+
+methods.mallFloors = function (req, res, next) {
+    Store.find({'mall': {
+        $regex: req.body.mall,
+        $options: "i"
+    }})
+        .then(function (result) {
+          let floor = []
+          for(let i = 0; i < result.length; i++) {
+            floor.push(result[i].floor)
+          }
+          let uniqFloor = _.uniq(floor)
+          res.send(uniqFloor)
+
         })
 }
 

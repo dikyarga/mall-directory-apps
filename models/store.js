@@ -4,7 +4,7 @@ let storeSchema = mongoose.Schema({
     dataId: Number,
     name: String,
     phone: String,
-    catagory: String,
+    category: String,
     floor: String,
     mall: String
 }, {

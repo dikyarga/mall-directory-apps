@@ -11,6 +11,6 @@ router.delete('/store/:id', Auth.verify, Store.remove)
 router.post('/store/search/name', Auth.verify, Store.findByName)
 router.post('/store/search/category', Auth.verify, Store.findByCategory)
 router.post('/store/search/floor', Auth.verify, Store.findByFloor)
-
+router.post('/store/mall/floor', Auth.verify, Store.mallFloors)
 
 module.exports = router;
