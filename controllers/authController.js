@@ -12,8 +12,8 @@ module.exports = {
   loginFacebook: function(req, res, next) {
     console.log(res.req.user.facebook.email);
     var token = jwt.sign({ email: res.req.user.facebook.email }, process.env.SECRET, { expiresIn: '1d' });
-    res.send({ token: token })
-    // res.redirect('http://localhost:3000')
+    // res.send({ token: token })
+    res.redirect(`http://localhost:8080?fbtoken=${token}`)
   },
 
   register: function(req, res, next) {
