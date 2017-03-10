@@ -65,19 +65,28 @@ methods.remove = function (req, res, next) {
 methods.findByName = function (req, res, next) {
     Store.find({
             'name': {
-                $regex: req.params.name,
+                $regex: req.body.name,
+                $options: "i"
+            },
+            'mall': {
+                $regex: req.body.mall,
                 $options: "i"
             }
         })
         .then(function (result) {
             res.send(result)
+            console.log(result);
         })
 }
 
 methods.findByCategory = function (req, res, next) {
     Store.find({
             'catagory': {
-                $regex: req.params.catagory,
+                $regex: req.body.catagory,
+                $options: "i"
+            },
+            'mall': {
+                $regex: req.body.mall,
                 $options: "i"
             }
         })
@@ -88,7 +97,11 @@ methods.findByCategory = function (req, res, next) {
 
 methods.findByFloor = function (req, res, next) {
     Store.find({
-            'floor': req.params.floor
+            'floor': req.body.floor,
+            'mall': {
+                $regex: req.body.mall,
+                $options: "i"
+            }
         })
         .then(function (result) {
             res.send(result)
