@@ -11,7 +11,9 @@ var newUser = new Schema({
     id: String,
     token: String,
     email: String,
-    name: String
+    givenName: String,
+    middleName: String,
+    familyName: String,
   }
 })
 
