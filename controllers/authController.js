@@ -13,7 +13,7 @@ module.exports = {
     console.log(res.req.user.facebook.email);
     var token = jwt.sign({ email: res.req.user.facebook.email }, process.env.SECRET, { expiresIn: '1d' });
     // res.send({ token: token })
-    res.redirect(`http://localhost:8080/home?fbtoken=${token}`)
+    res.redirect(`http://localhost/mallapp/home?token=${token}`)
   },
 
   register: function(req, res, next) {
