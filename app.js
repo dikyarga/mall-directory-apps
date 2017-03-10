@@ -9,6 +9,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var apis = require('./routes/apis')
 var passport = require('passport')
+var cors = require('cors')
 require('dotenv').config();
 
 var app = express();
@@ -34,6 +35,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 app.use('/', index);
 app.use('/users', users);
