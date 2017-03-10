@@ -46,14 +46,13 @@ passport.use(new FacebookStrategy({
 },
 function (token, refreshToken, profile, done) {
   process.nextTick(function () {
-    User.findOne({ 'facebook.id': profile.id, 'local.email': profile.emails[0].value }, function (err, user) {
+    User.findOne({ 'facebook.id': profile.id }, function (err, user) {
       if (err) return done(err)
       if (user) { return done(null, user) } else {
         User.create({
           'facebook.id' : profile.id,
           'facebook.token' : token,
-          'facebook.name' : profile.displayName,
-          'facebook.email' : profile.emails[0].value
+          'facebook.name' : profile.displayName
         }, function(err,data){
           if(err) throw err;
           return done(null, data)

@@ -13,7 +13,7 @@ require('dotenv').config();
 
 var app = express();
 
-require('./controllers/botController')
+// require('./controllers/botController')
 
 mongoose.connect(process.env.mongooseConfig, function (err) {
     if (err) throw err
